@@ -1,3 +1,3 @@
-email,first name,last name,job title,department,phone number,location,locale,manager email
-stacy@foxfabricsglobal.com,Stacy,Kumar,Marketing Manager,Business Marketing,(+65) 0181 8055 #4291,Paris - Building 10,en_US,lucy@foxfabricsglobal.com
-leslie@foxfabricsglobal.com,Leslie,Chen,HR Director,Factory Personnel,(+33) 55 867 5309 x411,Singapore - Merlion Tower,en_US,kelly@foxfabricsglobal.com
+email,first name,last name,job title,department,phone number,location,locale,manager email,timezone,external id,organization,division,cost center,start date
+scimagent-user23@eduardogomes.net,Stacy,Kumar,Marketing Manager,Business Marketing,(+65) 0181 8055 #4291,Paris - Building 10,en_US,,America/Sao_Paulo,edugomesuser23,org2,div1,cc1,2001-9-11
+scimagent-user24@eduardogomes.net,Leslie,Chen,HR Director,Factory Personnel,(+33) 55 867 5309 x411,Singapore - Merlion Tower,en_US,,America/Sao_Paulo,edugomesuser24,org2,div2,cc2,2017-02-17
