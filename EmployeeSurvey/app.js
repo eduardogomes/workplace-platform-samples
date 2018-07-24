@@ -32,10 +32,9 @@ app.use(express.static('public'));
 const
 	APP_SECRET = process.env.APP_SECRET,
 	VERIFY_TOKEN = process.env.VERIFY_TOKEN,
-	ACCESS_TOKEN = process.env.ACCESS_TOKEN,
-	SERVER_URL = (process.env.SERVER_URL);
+	ACCESS_TOKEN = process.env.ACCESS_TOKEN;
 
-if (!(APP_SECRET && VERIFY_TOKEN && ACCESS_TOKEN && SERVER_URL)) {
+if (!(APP_SECRET && VERIFY_TOKEN && ACCESS_TOKEN)) {
 	console.error('Missing environment variables');
 	process.exit(1);
 }
