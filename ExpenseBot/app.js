@@ -668,6 +668,7 @@ function submitClaim(senderID, claimId) {
     },function(error,response,body) {
         console.log(body);
         body = JSON.parse(body);
+        console.log(body);
         if(body.managers && body.managers.data[0]) {
             var manager = body.managers.data[0];
             var claim = getClaim(claimId);
