@@ -66,8 +66,9 @@ function subscribeWebhook() {
         method: 'POST',
         auth: {'bearer' : APP_ID + '|' + APP_SECRET},
         qs: {
+            'access_token': APP_ID + '|' + APP_SECRET,
             'object': 'page',
-            'fields': 'message_deliveries,messages,messaging_postbacks,messaging_optins',
+            'fields': 'message_deliveries,messages,messaging_postbacks,messaging_options',
             'verify_token': VERIFY_TOKEN,
             'callback_url': SERVER_URL + '/webhook'
         }
