@@ -4,6 +4,11 @@
 # This source code is licensed under the license found in the
 # LICENSE file in the root directory of this source tree.
 
+# encoding=utf8
+import sys
+reload(sys)
+sys.setdefaultencoding('utf8')
+
 import requests
 import json
 import csv
@@ -74,7 +79,7 @@ def getGroups(after=None):
 
     # Fetch feed for each group, since a given time, but only get 1 feed item. 
     # We'll use this later to check if there's fresh content in the group
-    params = "?fields=feed.since(" + SINCE.strftime("%s") + ").limit(1),name,updated_time&amp;"
+    params = "?fields=feed.since(" + SINCE.strftime("%s") + ").limit(1),name,updated_time"
 
     # Default paging limit
     params += "&amp;limit=" + DEFAULT_LIMIT
@@ -103,12 +108,14 @@ def getGroups(after=None):
                 groups.append(group_obj)
 
     # Is there more data to page through? Recursively fetch the next page
-    if json.dumps('"paging"') in result_json:
-        getGroups(after=result_json["paging"]["cursors"]["after"])
+    if 'next' in result_json["paging"].keys():
+        groups.extend(getGroups(after=result_json["paging"]["next"]))
 
     # Return an array of group IDs which have fresh content
     return groups
-for group in getGroups():
+
+groups  = getGroups()
+for group in groups:
     feed = getFeed(group["id"], group["name"])
 
     # Create a new CSV named after the timestamp / group id / group name, to ensure uniqueness
