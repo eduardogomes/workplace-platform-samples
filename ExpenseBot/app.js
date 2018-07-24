@@ -64,7 +64,6 @@ function subscribeWebhook() {
     graphapi({
         url: '/app/subscriptions',
         method: 'POST',
-        auth: {'bearer' : APP_ID + '|' + APP_SECRET},
         qs: {
             'access_token': APP_ID + '|' + APP_SECRET,
             'object': 'page',
@@ -667,6 +666,7 @@ function submitClaim(senderID, claimId) {
             fields: 'name,managers{name}'
         }
     },function(error,response,body) {
+        console.log(body);
         body = JSON.parse(body);
         if(body.managers && body.managers.data[0]) {
             var manager = body.managers.data[0];
@@ -700,6 +700,7 @@ function rejectClaim(senderID, claimId) {
 // certificate authority.
 app.listen(app.get('port'), function() {
     console.log('Node app is running on port', app.get('port'));
+    enableSubscriptions();
     subscribeWebhook();
     setupGetStartedButton();
     setupPersistentMenu();
